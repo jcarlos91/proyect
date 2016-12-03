@@ -1,0 +1,13 @@
+login:
+    path:    /login
+    defaults: { _controller: EscritoresBundle:Security:login }
+login_check:
+    path:    /login_check
+logout:
+    path:    /logout
+escritores_homepage:
+    path:     /
+    defaults: { _controller: EscritoresBundle:Default:index }
+escritores_registro:
+    path:    /registro
+    defaults: { _controller: EscritoresBundle:Registro:registro }

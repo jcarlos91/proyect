@@ -1,0 +1,44 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/security.html
+security:
+    encoders:
+        Symfony\Component\Security\Core\User\User:
+            algorithm:   sha1
+            iterations: 1
+            encode_as_base64: false
+        EscritoresBundle\Entity\Users:
+            algorithm: sha512
+            encode-as-base64: true
+            iterations: 10
+
+    # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    providers:
+        chain_provider:
+            chain:
+                providers: [in_memory, user_db]
+        in_memory:
+            memory:
+                users:
+                    admin: { password: dc76e9f0c0006e8f919e0c515c66dbba3982f785, roles: 'ROLE_ADMIN' }
+        user_db:
+            entity: { class: EscritoresBundle\Entity\Users, property: username }
+    firewalls:
+        secured_area:
+            pattern:    ^/
+            anonymous:  ~
+            form_login:
+                login_path:  login
+                check_path:  login_check
+            logout:
+                path:   /logout
+                target: /login
+    access_control:
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+
+framework:
+    session:
+        cookie_lifetime: 0 
