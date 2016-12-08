@@ -11,3 +11,6 @@ escritores_homepage:
 escritores_registro:
     path:    /registro
     defaults: { _controller: EscritoresBundle:Registro:registro }
+sidebar:
+    path: /sidebar
+    defaults: { _controller: EscritoresBundle:Default:sidebar }

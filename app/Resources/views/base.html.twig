@@ -13,7 +13,12 @@
     </head>
     <body>
         {% block nav %}{% endblock %}
-        {% block contenido %}{% endblock %}
+        <section class="container">
+            <article class="row">
+                {% block contenido %}{% endblock %}            
+                {% block sidebar %}{% endblock %}
+            </article>
+        </section>        
         {% block footer %}{% endblock %}
     </body>
 </html>

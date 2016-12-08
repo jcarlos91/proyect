@@ -9,6 +9,7 @@
   <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css.map')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('css/estilo.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('css/blog.css')}}">
 {% endblock %}
 {% block header %}
   {% block title %}{% endblock %}
@@ -20,6 +21,12 @@
 
 {% block contenido %}
 	
+{% endblock %}
+
+{% block sidebar %}
+	{#{ render('BlogBundle:Page:sidebar.html.twig') }#}
+    {{ render(controller('EscritoresBundle:Default:sidebar')) }}
+    {#{ include('EscritoresBundle:Comunes:sidebar.html.twig')}#}
 {% endblock %}
 
 {% block footer %}

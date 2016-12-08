@@ -1,0 +1,38 @@
+
+<div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+  <div class="sidebar-module sidebar-module-inset">
+    <h4>Tag Cloud</h4>
+    <p>
+    	{% for tag, weight in tags %}
+    		<span class="weight-{{ weight }}">
+    			{{ tag }}-
+    		</span>
+    	{% else %}
+			<p>Ther no tags </p>
+    	{% endfor %}	
+    </p>
+  </div>
+  <div class="sidebar-module">
+    <h4>Lates Comments </h4>
+    	{% for comment in latesComments %}
+    		<article class="comment">
+    			<p class="small">
+    				<span class="highlight">{{ comment.user }} </span>
+    					Commentes on <a href="#">{{ comment.blog.title}}</a>
+    				<em><time datetime="{{comment.created|date('c')}}">{{ comment.created|created_go }}</time></em>
+    				<p>{{ comment.comment}}</p>
+    			</p>
+    		</article>
+    	{% else %}	
+    		<p>Ther are no recent comment </p>
+    	{% endfor %}
+  </div>
+  <div class="sidebar-module">
+    <h4>Elsewhere</h4>
+    <ol class="list-unstyled">
+      <li><a href="#">GitHub</a></li>
+      <li><a href="#">Twitter</a></li>
+      <li><a href="#">Facebook</a></li>
+    </ol>
+  </div>
+</div>

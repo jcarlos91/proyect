@@ -40,3 +40,13 @@ body > .container {
 code {
   font-size: 80%;
 }
+.image{
+  width: 190px; 
+  float: left; 
+  padding: 5px; 
+  border: 1px solid #ccc; 
+  margin: 0 10px 10px 0;
+}
+.highlight { 
+  color: #F48A00;
+}
