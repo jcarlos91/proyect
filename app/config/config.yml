@@ -9,6 +9,7 @@ imports:
 parameters:
     locale: en
     blogger_blog.comments.latest_comment_limit: 10
+    #httpProtocol: https
 
 framework:
     #esi:             ~

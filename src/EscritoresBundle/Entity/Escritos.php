@@ -239,7 +239,7 @@ class Escritos
     /**
      * Get comments
      *
-     * @return string
+     * @return EscritoresBundle\Entity\Comment
      */
     public function getComments()
     {
@@ -316,6 +316,59 @@ class Escritos
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Add comment
+     *
+     * @param \EscritesBundle\Entity\Comment $comment
+     *
+     * @return Blog
+     */
+    public function addComment(\EscritoresBundle\Entity\Comment $comment)
+    {
+        $this->comments[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param \EscritoresBundle\Entity\Comment $comment
+     */
+    public function removeComment(\EscritoresBundle\Entity\Comment $comment)
+    {
+        $this->comments->removeElement($comment);
+    }
+
+    public function __toString(){
+        return $this->getTitle();
+    }
+
+    public function slugify($text){
+        //sustituye caracteres de espacio  o digitos en un -
+        $text = preg_replace('#[^\\pL\d]+#u', '-', $text);
+
+        //recorta espacios en ambos extremos
+        $text = trim($text,'-');
+
+        //translitera
+        if (function_exists('iconv')) {
+            $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+        }
+
+        //cambia a minusculas
+        $text = strtolower($text);
+
+        //eliminar carecteres indeseables
+        $text = preg_replace('#[^\\pL\d]+#u', '', $text);
+
+        if (empty($text)) {
+            return 'n-a';
+        }
+
+        return $text;
     }
 }
 

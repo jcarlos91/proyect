@@ -50,3 +50,13 @@ code {
 .highlight { 
   color: #F48A00;
 }
+.titleblue{
+  color: #337ab7;
+}
+
+.comments { clear: both; }
+.contents .odd { background: #eee; }
+.comments .comments { padding: 20px; }
+.comments .comments p { margin-bottom:  0px;}
+.comments h3 { background: #eee; padding: 10px; font-size: 20px; margin-bottom: 20px; clear: both; }
+.comments .previous-comments { margin-bottom: 20px; }

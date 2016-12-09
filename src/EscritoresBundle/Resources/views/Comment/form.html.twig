@@ -1,0 +1,19 @@
+<form action="{{path('escritos_new_comment',{'blog_id': comment.blog.id })}}" method="POST">
+	{{ form_start (form)}}
+		{{ form_errors(form)}}	
+			 
+	    	{{form_label(form.user)}}
+	    	{{form_errors(form.user)}}
+	    	{{form_widget(form.user,{'attr':{'class': 'form-control'}}) }}
+
+			{{form_label(form.comment)}}
+	    	{{form_errors(form.comment)}}
+	    	{{form_widget(form.comment,{'attr':{'class': 'form-control'}})}}
+		<p><br>
+			<input type="submit" value="Submit">
+		</p>
+
+	{{form_row(form._token) }}
+	{{form_rest(form) }}
+	{{form_end(form) }}
+</form>

@@ -9,7 +9,7 @@
 			<div class="blog-header">
 				<header>
 	    			<h2>
-	    				<a href="#">
+	    				<a href="{{ path('escritos_show', { 'id': blogs.id, 'slug': blogs.slug }) }}">
 	    					{{ blogs.title}}
 	    				</a>
 	    			</h2>
@@ -21,11 +21,11 @@
     		<img class="image" src="{{asset(['img/', blogs.image]|join)}}">
     		<div>
     			<p>{{ blogs.blog(500) }}</p>
-    			<p><a href=""></a>continue reading...</p>
+    			<p><a href="{{ path('escritos_show', { 'id': blogs.id, 'slug': blogs.slug }) }}">continue reading...</a></p>
     		</div>
 
     		<footer>
-    			<p>Comments: <a href="">{{ blogs.comments|length}}</a> </p>
+    			<p>Comments: <a href="{{path('escritos_show',{ 'id':blogs.id, 'slug': blogs.slug }) }} #comments">{{ blogs.comments|length}}</a> </p>
     			<p class="blog-post-meta">Posted by  <span class="highlight">{{ blogs.author }}</span> at {{ blogs.created|date('h:iA') }}</p>
     			<p>Tags: <span class="highlight">{{ blogs.tags }}</span></p>
     		</footer>

@@ -49,4 +49,8 @@ class DefaultController extends Controller
             )
         );
     }
+
+    public function aboutusAction(){
+        return $this->render('EscritoresBundle:Default:about.html.twig');
+    }
 }

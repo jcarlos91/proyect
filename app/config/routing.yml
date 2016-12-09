@@ -1,3 +1,4 @@
 escritores:
     resource: "@EscritoresBundle/Resources/config/routing.yml"
     prefix:   /
+    #schemes:  [%httpProtocol%]

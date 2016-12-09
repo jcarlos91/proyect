@@ -19,7 +19,7 @@
 			
 				{{form_label(form.email,'Email:')}}
 				{{form_widget(form.email,{'attr':{'class':'form-control'}})}}{{form_errors(form.email)}}
-
+				<br>
 				<input class="btn btn-default" type="submit">
 			{{ form_row(form._token) }}
 			{{ form_rest(form) }}
@@ -27,3 +27,4 @@
 		</article>
 	</section>
 {% endblock %}
+{% block sidebar %}{% endblock %}

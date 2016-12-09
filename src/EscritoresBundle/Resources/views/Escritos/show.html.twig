@@ -1,0 +1,35 @@
+{% extends 'EscritoresBundle::main.html.twig' %}
+
+{% block title %}
+	{{ blog.title }}
+{% endblock %}
+
+{% block contenido %}
+	<article class="col-sm-8 blog-main">
+		<head>
+			<div class="date">
+				<time datetime="{{blog.created|date('c')}}">
+					{{blog.created|date('l, F j. Y')}}
+				</time>
+				<h2 class="titleblue">{{ blog.title }}</h2>
+			</div>
+		</head>
+		<img class="large" src="{{asset(['img/', blog.image]|join) }}" alt="{{ blog.title}} image not fount"/>
+		
+		<div>
+			<br>
+			<p class="text-justify">{{ blog.blog }}</p>
+		</div>
+		<article class="comments" id="comments">
+	        <section class="previous-comments">
+	            <h3>Comments</h3>
+	            {% include 'EscritoresBundle:Comment:index.html.twig' with { 'comment': comment } %}
+	        </section>
+    	</article>
+    	<section class="comments" id="comments">
+		    <h3>Add Comment</h3>
+		    	{{ render(controller('EscritoresBundle:Comment:new', {'blog_id': blog.id })) }}
+		</section>
+    </article>	
+    	
+{% endblock %}

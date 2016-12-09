@@ -14,3 +14,17 @@ escritores_registro:
 sidebar:
     path: /sidebar
     defaults: { _controller: EscritoresBundle:Default:sidebar }
+escritores_about_us:
+    path:   /about-us
+    defaults: { _controller: EscritoresBundle:Default:aboutus }
+escritos_show:
+    path:   /{id}/{slug}
+    defaults: { _controller: EscritoresBundle:Escritos:show }
+    requirements:
+        id: \d+
+escritos_new_comment:
+    path:   /comment/{blog_id}
+    defaults: { _controller: EscritoresBundle:Comment:created }
+    requirements:
+        _method: POST
+        blog_id: \d+

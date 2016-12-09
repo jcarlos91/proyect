@@ -1,0 +1,22 @@
+{# src/BlogBundle/Resouces/views/form.html.twig #}
+
+<form action="{{ path('blog_comment_new',{'blog_id': comment.blog.id }) }}" method="POST"{#{ form_enctype(form)}#} class="blogger">
+	{{ form_start (form)}}
+		{{ form_errors(form)}}	
+   		 
+	    	{{form_label(form.user)}}
+	    	{{form_errors(form.user)}}
+	    	{{form_widget(form.user)}}
+
+			{{form_label(form.comment)}}
+	    	{{form_errors(form.comment)}}
+	    	{{form_widget(form.comment)}}
+		<p>
+			<input type="submit" value="Submit">
+		</p>
+
+	    {{form_row(form._token) }}
+	    {{form_rest(form) }}
+	    {{form_end(form) }}
+	
+</form>
