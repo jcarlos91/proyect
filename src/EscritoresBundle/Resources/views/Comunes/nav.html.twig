@@ -38,6 +38,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="{{url('escritores_about_us')}}">About Us</a></li>
         {% if app.user %}
+          <li><a href="">Perfil</a></li>
           <li><a href="{{url('logout')}}">Cerrar Sesion</a></li>
         {% else %}  
           <li><a href="{{url('login')}}">LogIn</a></li>

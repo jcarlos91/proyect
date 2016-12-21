@@ -16,6 +16,11 @@ class EscritosRepository extends \Doctrine\ORM\EntityRepository{
 		if (false == is_null($limit)) {
 			$qd->setMaxResults($limit);
 		}
+		/*$paginator  = $this->get('knp_paginator');
+		$pagination = $paginator->paginate(
+            $qd,
+            $this->get('request')->query->get('page', 1),10
+        );*/
 		return $qd->getQuery()->getResult();
 	}
 
@@ -34,23 +39,6 @@ class EscritosRepository extends \Doctrine\ORM\EntityRepository{
 		}					
 		return $tags;
 	}
-
-	/*public function getTags(){
-		$blogTags = $this->createQueryBuilder('b')
-						->select('b.tags')
-						->getQuery()
-						->getResult();
-		$tags = array();
-		foreach ($blogTags as $blogTag) {
-			$tags = array_merge(explode(",", $blogTag['tags']), $tags);
-		}
-
-		foreach ($tags as &$tag) {
-			$tag = trim($tag);
-		}
-
-		return $tags;
-	}*/
 
 	public function getTagsWeights($tags){
 		$tagWeights = array();

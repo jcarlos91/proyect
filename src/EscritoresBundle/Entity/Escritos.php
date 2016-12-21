@@ -31,9 +31,11 @@ class Escritos
     private $title;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="author", type="string", length=100)
+     * @var \EscritoresBundle\Entity\Users
+     * @ORM\ManyToOne(targetEntity="EscritoresBundle\Entity\Users")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="author", referencedColumnName="id")
+     *   })
      */
     private $author;
 
@@ -126,11 +128,11 @@ class Escritos
     /**
      * Set author
      *
-     * @param string $author
+     * @param \EscritoresBundle\Entity\Users
      *
      * @return Escritos
      */
-    public function setAuthor($author)
+    public function setAuthor(\EscritoresBundle\Entity\Users $author = null)
     {
         $this->author = $author;
 
@@ -140,7 +142,7 @@ class Escritos
     /**
      * Get author
      *
-     * @return string
+     * @return \EscritoresBundle\Entity\Users
      */
     public function getAuthor()
     {

@@ -5,7 +5,19 @@
 {% block contenido %}
     
     <div class="col-sm-8 blog-main">
-    	{% for blogs in blog %}    		
+        {# total items count }
+        <div class="count">
+            <span class="label label-primary">
+                Entradas en total: {{ pagination.getTotalItemCount }}
+            </span>
+        </div>
+		{{}#}
+		{% if app.user %}
+			<a href="">
+				Nuevo Escrito
+			</a>
+		{% endif %}
+    	{% for blogs in pagination %}    		
 			<div class="blog-header">
 				<header>
 	    			<h2>
@@ -26,9 +38,12 @@
 
     		<footer>
     			<p>Comments: <a href="{{path('escritos_show',{ 'id':blogs.id, 'slug': blogs.slug }) }} #comments">{{ blogs.comments|length}}</a> </p>
-    			<p class="blog-post-meta">Posted by  <span class="highlight">{{ blogs.author }}</span> at {{ blogs.created|date('h:iA') }}</p>
+    			<p class="blog-post-meta">Posted by  <span class="highlight">{{ blogs.author.username }}</span> at {{ blogs.created|date('h:iA') }}</p>
     			<p>Tags: <span class="highlight">{{ blogs.tags }}</span></p>
     		</footer>
     	{% endfor %}
+        <div class="paginacion">
+            {{ knp_pagination_render(pagination) }}
+        </div>
     </div>
 {% endblock %}

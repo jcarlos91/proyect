@@ -28,3 +28,9 @@ escritos_new_comment:
     requirements:
         _method: POST
         blog_id: \d+
+escritos_perfil:
+    path:    /perfil
+    defaults: { _controller:EscritoresBundle:Perfil:perfil }
+escritos_new:
+    path:    /perfil/escritos/escritos_new
+    defaults: { _controller: EscritoresBundle:Escritos:new }

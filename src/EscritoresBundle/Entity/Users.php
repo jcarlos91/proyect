@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Doctrine\Common\Collections\Criteria;
 
 /**
  * Users
@@ -68,9 +69,13 @@ class Users implements UserInterface, \Serializable
     private $isActive;
 
     /**
-     * @var $roles
-     *
-     * @ORM\Column(name="roles",type="integer")
+     * 
+     * @var \EscritoresBundle\Entity\Roles
+     * @ORM\ManyToOne(targetEntity="EscritoresBundle\Entity\Roles")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="roles", referencedColumnName="id")
+     *   })
+     * 
      */
     private $roles;
 
@@ -82,10 +87,11 @@ class Users implements UserInterface, \Serializable
      */
     public function getId()
     {
-        $user = $this->get('security.context')->getToken()->getUser();
+        /*$user = $this->get('security.context')->getToken();
         $userId = $user->getId();
         //return $this->id;
-        return $userId;
+        return $userId;*/
+        return $this->id;
     }
 
     /**
@@ -187,8 +193,6 @@ class Users implements UserInterface, \Serializable
     public function __construct(){
         $this->salt = md5(uniqid(null, true));
         $this->isActive = true;
-        $this->roles = 1;
-
     }
 
     /**
@@ -225,7 +229,7 @@ class Users implements UserInterface, \Serializable
      *
      * @return Users
      */
-    public function serisActive($isActive){
+    public function setisActive($isActive){
         $this->isActive = $isActive;
 
         return $this;
@@ -245,9 +249,9 @@ class Users implements UserInterface, \Serializable
      *
      * @param integer
      *
-     * @return Users
+     * @return \EscritoresBundle\Entity\Roles
      */
-    public function setRoles($roles){
+    public function setRoles(\EscritoresBundle\Entity\Roles $roles = null ){
         $this->roles =  $roles;
 
         return $this;
@@ -256,15 +260,11 @@ class Users implements UserInterface, \Serializable
     /**
      * GetRoles
      *
-     * @return Users
+     * @return \EscritoresBundle\Entity\Roles
      */
     public function getRoles()
     {
-        if (is_object($this->roles) && $this->roles->getId() === 1) {
-            return array('ROLE_ADMIN');
-        } else {
-            return array('ROLE_USER');
-        }
+        return array('ROLE_ADMIN');
     }
 }
 

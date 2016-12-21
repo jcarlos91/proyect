@@ -4,20 +4,31 @@ namespace EscritoresBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use EscritoresBundle\Entity\Escritos;
+use Knp\Bundle\PaginatorBundle\Definition\PaginatorAwareInterface;
+use Symfony\Component\HttpFoundation\Request;
+
+
 class DefaultController extends Controller
 {
-    public function indexAction(){
-        $em = $this->getDoctrine()->getEntityManager();
+    public function indexAction(Request $request){
+        $em = $this->getDoctrine()->getManager();
         $blog = $em->getRepository('EscritoresBundle:Escritos')->getLatesEscritos();
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $blog, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            5/*limit per page*/
+        );
         
         return $this->render('EscritoresBundle:Default:index.html.twig',array(
-        	'blog'=>$blog
+        	'blog'=>$blog,
+            'pagination' => $pagination
         	)
         );
     }
 
     public function showAction($id,$slug){
-    	$em = $this->getDoctrine()->getEntityManager();
+    	$em = $this->getDoctrine()->getManager();
 
     	$blog = $em->getRepository('EscritoresBundle:Escritos')->find($id);
     	if(!$blog){
@@ -35,7 +46,7 @@ class DefaultController extends Controller
     }
 
     public function sidebarAction(){
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $tags = $em->getRepository('EscritoresBundle:Escritos')->getTags();
         $tagWeights = $em->getRepository('EscritoresBundle:Escritos')->getTagsWeights($tags);
 

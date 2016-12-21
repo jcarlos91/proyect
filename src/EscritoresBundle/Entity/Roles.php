@@ -62,5 +62,15 @@ class Roles
     {
         return $this->role;
     }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->user = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+
 }
 

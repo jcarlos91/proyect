@@ -4,6 +4,7 @@ namespace EscritoresBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use EscritoresBundle\Entity\Escritos;
+use EscritoresBundle\Form\EscritosType
 
 class EscritosController extends Controller{
 	public function showAction($id,$slug){
@@ -22,4 +23,23 @@ class EscritosController extends Controller{
 			)
 		);
 	}
+
+    /**
+     * @param Resquest $request
+     * @throws \ErrorException
+     */
+    public function newAction(Resquest $request){
+
+        $form = $this->createForm(EscritosType::class);
+        $form->handleRequest($request);
+        if ($form->isValid() && $form->isSubmitted()){
+            try{
+
+            }
+            catch(\Exception $e){
+                throw new \ErrorException($e->getMessage());
+            }
+        }
+        return $this->render();
+    }
 }
