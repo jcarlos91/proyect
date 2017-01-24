@@ -1,0 +1,38 @@
+{% extends 'EscritoresBundle::main.html.twig' %}
+{% block contenido %}
+    <section class="col-sm-8 blog-main">
+        {% if pagination.getTotalItemCount <= 0 %}
+            <p>No tienes ningun escrito, empieza a escribir </p>
+            <button class="btn btn-default" type="button" onclick="window.location='{{ path('escritos_new') }}';">Nuevo Escrito</button>
+        {% else %}
+            {% for blogs in pagination %}
+                <div class="blog-header">
+                    <header>
+                        <h2>
+                            <a href="{{ path('escritos_show', { 'id': blogs.id, 'slug': blogs.slug }) }}">
+                                {{ blogs.title}}
+                            </a>
+                        </h2>
+                    </header>
+                    <time class="blog-post-meta" datetime="{{ blogs.created|date('c')}}">
+                        {{ blogs.created|date('l, F j Y')}}
+                    </time>
+                </div>
+                <img class="image" src="{{asset(['uploads/', blogs.image]|join)}}">
+                <div>
+                    <p>{{ blogs.blog(500) }}</p>
+                    <p><a href="{{ path('escritos_show', { 'id': blogs.id, 'slug': blogs.slug }) }}">continue reading...</a></p>
+                </div>
+
+                <footer>
+                    <p>Comments: <a href="{{path('escritos_show',{ 'id':blogs.id, 'slug': blogs.slug }) }} #comments">{{ blogs.comments|length}}</a> </p>
+                    <p class="blog-post-meta">Posted by  <span class="highlight">{{ blogs.author.username }}</span> at {{ blogs.created|date('h:iA') }}</p>
+                    <p>Tags: <span class="highlight">{{ blogs.tags }}</span></p>
+                </footer>
+            {% endfor %}
+            <div class="paginacion">
+                {{  knp_pagination_render(pagination) }}
+            </div>
+        {% endif %}
+    </section>
+{% endblock %}

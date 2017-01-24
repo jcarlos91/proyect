@@ -34,3 +34,9 @@ escritos_perfil:
 escritos_new:
     path:    /perfil/escritos/escritos_new
     defaults: { _controller: EscritoresBundle:Escritos:new }
+escritos_perfil_misescritos:
+    path:    /perfil/mis_escritos
+    defaults: { _controller: EscritoresBundle:Escritos:misescritos }
+escritors_restablece_contrasena:
+    path:    /restablece-contrasena
+    defaults: { _controller: EscritoresBundle:Registro:restableceContrasena }

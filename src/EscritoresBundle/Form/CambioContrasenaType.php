@@ -3,33 +3,30 @@
 namespace EscritoresBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 
-class EscritosType extends AbstractType
+class CambioContrasenaType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('title')
-                ->add('blog')
-                ->add('image',FileType::class,array(
-                    'label'=>"Imagen:"
-                ))
-                ->add('tags')
-        ;
+        $builder->add('email',EmailType::class)
+            ->add('password',PasswordType::class);
+        /*->add('approved')->add('created')->add('updated')->add('blog');*/
     }
-    
+
     /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'EscritoresBundle\Entity\Escritos'
+            //'data_class' => 'EscritoresBundle\Entity\Comment'
         ));
     }
 
@@ -38,7 +35,7 @@ class EscritosType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'escritoresbundle_escritos';
+        return 'escritoresbundle_cambiocontrasena';
     }
 
 

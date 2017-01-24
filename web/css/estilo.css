@@ -43,9 +43,9 @@ code {
 .image{
   width: 190px; 
   float: left; 
-  padding: 5px; 
+  padding: 5px;
   border: 1px solid #ccc; 
-  margin: 0 10px 10px 0;
+  margin: 8px 10px 0px 0px;
 }
 .highlight { 
   color: #F48A00;

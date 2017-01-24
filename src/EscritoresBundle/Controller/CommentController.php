@@ -12,7 +12,11 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class CommentController extends Controller{
 
-	public function newAction($blog_id){
+    /**
+     * @param $blog_id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function newAction($blog_id){
 		$blog = $this->getBlog($blog_id);
 
 		$comment = new Comment();
@@ -28,7 +32,6 @@ class CommentController extends Controller{
 
 	public function createdAction(Request $request, $blog_id){
 		$blog = $this->getBlog($blog_id);
-
 		$comment = new Comment();
 		$comment->setBlog($blog);
 		$form = $this->createForm(CommentType::class, $comment);

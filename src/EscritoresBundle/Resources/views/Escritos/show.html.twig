@@ -14,10 +14,8 @@
 				<h2 class="titleblue">{{ blog.title }}</h2>
 			</div>
 		</head>
-		<img class="image large" src="{{asset(['img/', blog.image]|join) }}" alt="{{ blog.title}} image not fount"/>
-		
 		<div>
-			<br>
+			<img class="image large" src="{{asset(['uploads/', blog.image]|join) }}" alt="{{ blog.title}} image not fount"/>
 			<p class="text-justify">{{ blog.blog }}</p>
 		</div>
 		<article class="comments" id="comments">

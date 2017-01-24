@@ -17,9 +17,9 @@
             <div class="error"><span>+</span></div>
         </form><br>
         {% if error %}
-            <div id="connect">{{ error.message | trans({}, 'security') }} <a href="#">Restablecer Contraseña</a></div>
+            <div id="connect">{{ error.message | trans({}, 'security') }} <a class=" login" href="{{ url('escritors_restablece_contrasena') }}">Restablecer Contraseña</a></div>
         {% endif %}
-        <a href="{{url('escritores_registro')}}">Registrarse</a>
+        <a class="login" href="{{url('escritores_registro')}}">Registrarse</a>
     </div>
 {% endblock %}
 {% block sidebar %}{% endblock %}

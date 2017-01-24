@@ -165,4 +165,9 @@ h6, .h6 {
   margin-bottom: 0;
 }
 
-img.large { width: 300px; min-height: 165px; }
+img.large {
+  width: 300px;
+  min-height: 165px;
+  margin-top: 15px;
+  
+}

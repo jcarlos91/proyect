@@ -1,0 +1,28 @@
+{% extends 'EscritoresBundle::main.html.twig' %}
+{% block title %}Registro{% endblock %}
+{% block contenido %}
+    <section class="container">
+        <article class="col-md-12">
+            <h1>Cambio de Contraseña</h1>
+            <form method="POST">
+                {{ form_start(form) }}
+                {{ form_errors(form) }}
+
+                {{form_label(form.email,'Email:')}}
+                {{form_widget(form.email,{'full_name':'email','attr':{'class':'form-control'}})}}
+                {{form_errors(form.email)}}
+
+                {{form_label(form.password,'Contraseña:')}}
+                {{form_errors(form.password)}}
+                {{form_widget(form.password,{ 'full_name': 'password','attr':{'class': 'form-control'} })}}
+
+                <br>
+                <input class="btn btn-default" type="submit">
+                {{ form_row(form._token) }}
+                {{ form_rest(form) }}
+                {{ form_end(form) }}
+            </form>
+        </article>
+    </section>
+{% endblock %}
+{% block sidebar %}{% endblock %}

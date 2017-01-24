@@ -24,6 +24,14 @@ class EscritosRepository extends \Doctrine\ORM\EntityRepository{
 		return $qd->getQuery()->getResult();
 	}
 
+	public function getByEscritor($user){
+        $qd = $this->createQueryBuilder('b')
+                    ->select('b')
+                    ->where('b.author = ?1')
+                    ->setParameter(1, $user);
+        return $qd->getQuery()->getResult();
+
+    }
 	public function getTags(){
 		$blogTags = $this->createQueryBuilder('b')
 						->select('b.tags')

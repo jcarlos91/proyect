@@ -69,6 +69,7 @@ class Roles
     public function __construct()
     {
         $this->user = new \Doctrine\Common\Collections\ArrayCollection();
+
     }
 
 

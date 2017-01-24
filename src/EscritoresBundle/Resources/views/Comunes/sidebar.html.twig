@@ -18,7 +18,7 @@
     		<article class="comment">
     			<p class="small">
     				<span class="highlight">{{ comment.user }} </span>
-    					Commentes on <a href="#">{{ comment.blog.title}}</a>
+    					Commentes on <a href="{{ path('escritos_show',{ 'id': comment.blog.id, 'slug': comment.blog.slug }) }}#comment-{{ comment.id }}">{{ comment.blog.title}}</a>
     				<em><time datetime="{{comment.created|date('c')}}">{{ comment.created|created_go }}</time></em>
     				<p>{{ comment.comment}}</p>
     			</p>

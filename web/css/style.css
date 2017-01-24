@@ -183,5 +183,8 @@ button:active {
 
 .connect a:hover { background-position: center bottom; }
 
-
+.login{
+    color: #ffffff;
+    text-decoration: none;
+}
 

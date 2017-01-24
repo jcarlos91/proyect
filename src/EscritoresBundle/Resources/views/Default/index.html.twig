@@ -13,9 +13,10 @@
         </div>
 		{{}#}
 		{% if app.user %}
-			<a href="">
+			<a href="{{ path('escritos_new') }}">
 				Nuevo Escrito
 			</a>
+
 		{% endif %}
     	{% for blogs in pagination %}    		
 			<div class="blog-header">
@@ -30,7 +31,7 @@
     				{{ blogs.created|date('l, F j Y')}}
     			</time>    			
     		</div>
-    		<img class="image" src="{{asset(['img/', blogs.image]|join)}}">
+    		<img class="image" src="{{asset(['uploads/', blogs.image]|join)}}">
     		<div>
     			<p>{{ blogs.blog(500) }}</p>
     			<p><a href="{{ path('escritos_show', { 'id': blogs.id, 'slug': blogs.slug }) }}">continue reading...</a></p>

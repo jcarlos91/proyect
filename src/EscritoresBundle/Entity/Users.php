@@ -68,7 +68,7 @@ class Users implements UserInterface, \Serializable
      */
     private $isActive;
 
-    /**
+    /*
      * 
      * @var \EscritoresBundle\Entity\Roles
      * @ORM\ManyToOne(targetEntity="EscritoresBundle\Entity\Roles")
@@ -76,6 +76,11 @@ class Users implements UserInterface, \Serializable
      *   @ORM\JoinColumn(name="roles", referencedColumnName="id")
      *   })
      * 
+     */
+    /**
+     * @var $roles
+     *
+     * @ORM\Column(name="roles", type="integer")
      */
     private $roles;
 
@@ -193,6 +198,7 @@ class Users implements UserInterface, \Serializable
     public function __construct(){
         $this->salt = md5(uniqid(null, true));
         $this->isActive = true;
+        $this->roles = 1;
     }
 
     /**

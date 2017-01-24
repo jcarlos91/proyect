@@ -4,7 +4,10 @@ namespace EscritoresBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCo0llection;
-use Symfony\Component\Validator\Constraint as Assert;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 
 /**
  * Escritos
@@ -45,11 +48,15 @@ class Escritos
      * @ORM\Column(name="blog", type="text")
      */
     private $blog;
-
     /**
-     * @var string
+     * @var
      *
-     * @ORM\Column(name="image", type="string", length=150)
+     * @ORM\Column(name="image", type="string", nullable=true)
+     * @Assert\File(
+     *     maxSize="600000",
+     *     maxSizeMessage="The file is too large. Allowed maximum size is 8MB",
+     *     mimeTypes={"image/jpg", "image/png", "image/gif", "image/jpeg", "application/pdf"}
+     * )
      */
     private $image;
 
@@ -371,6 +378,11 @@ class Escritos
         }
 
         return $text;
+    }
+
+    public function __construct(){
+        $this->setCreated(new \DateTime());
+        $this->setUpdated(new \DateTime());
     }
 }
 

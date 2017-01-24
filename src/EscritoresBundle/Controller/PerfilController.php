@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use EscritoresBundle\Entity\Perfil;
 use EscritoresBundle\Form\PerfilType;
 use Symfony\Component\HttpFoundation\Request;
-use EscritoresBundle\Entity\Users;
+
 /*
  *Comment Controller
  */
